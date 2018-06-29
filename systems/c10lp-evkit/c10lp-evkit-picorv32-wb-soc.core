@@ -13,7 +13,7 @@ backend = quartus
 
 [quartus]
 family = "Cyclone 10 LP"
-device = 10CL025YU256I7G
+device = 10CL016YU256C8G
 sdc_files = data/c10lp-evkit.sdc
 tcl_files = data/c10lp-evkit-pinmap.tcl
             data/options.tcl

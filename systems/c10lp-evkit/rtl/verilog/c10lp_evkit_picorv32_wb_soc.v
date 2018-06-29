@@ -1,8 +1,8 @@
 module c10lp_evkit_picorv32_wb_soc(
 	input CLK50MHZ,
 
-	input [3:0] USER_PB,
-	output [3:0] USER_LED,
+	input  USER_PB,
+	output [1:0] USER_LED,
 
 	input ARDUINO_IO0,
 	output ARDUINO_IO1
@@ -13,15 +13,15 @@ module c10lp_evkit_picorv32_wb_soc(
 
 	altpll_wb_clkgen #(
 		.DEVICE_FAMILY ("Cyclone 10 LP"),
-		.INPUT_FREQUENCY (50),
+		.INPUT_FREQUENCY (48),
 
 		/* wb_clk: 24 MHz */
-		.WB_DIVIDE_BY (25),
+		.WB_DIVIDE_BY (24),
 		.WB_MULTIPLY_BY (12)
 	)
 	clkgen(
 		.sys_clk_pad_i (CLK50MHZ),
-		.rst_n_pad_i (USER_PB[0]),
+		.rst_n_pad_i (USER_PB),
 
 		.wb_clk_o (wb_clk),
 		.wb_rst_o (wb_rst)
@@ -51,7 +51,5 @@ module c10lp_evkit_picorv32_wb_soc(
 
 	assign USER_LED[0] = wb_clk;
 	assign USER_LED[1] = wb_rst;
-	assign USER_LED[2] = uart0_rx;
-	assign USER_LED[3] = uart0_tx;
 
 endmodule
