@@ -39,7 +39,7 @@ module c10lp_evkit_picorv32_wb_soc(
 		.BOOTROM_MEMFILE ("nmon_picorv32-wb-soc_24MHz_115200.txt"),
 		.BOOTROM_MEMDEPTH (1024),
 
-		.SRAM0_MEMDEPTH (16384)
+		.SRAM0_MEMDEPTH (32768)
 	)
 	soc(
 		.clock (wb_clk),
